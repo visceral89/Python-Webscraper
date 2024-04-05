@@ -5,6 +5,11 @@ import requests
 heroes = ["abaddon", "axe", "zuus", "lich"]
 
 
+# headers = {
+#    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+# }
+
+
 # Funktionen download Portraits
 def downloadPortraits(heroes_list):
     base_url = (
@@ -19,7 +24,7 @@ def downloadPortraits(heroes_list):
     # Gör detta för varje "hero" i heroes_list
     for hero in heroes_list:
         image_url = f"{base_url}{hero}.png"
-        response = requests.get(image_url)
+        response = requests.get(image_url)  # headers=headers
         # Kolla svarskoden, 200 = ok.
         if response.status_code == 200:
             file_path = os.path.join(dir_name, f"{hero}.png")
